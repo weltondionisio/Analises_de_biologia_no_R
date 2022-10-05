@@ -1,3 +1,3 @@
 # Análises de biologia no R
 
-Esse reposiório contém análises realizadas por mim em pesquisas acadêmicas, sendo atualizado à medida que forem publicadas em periódicos científicos.
+Esse reposiório contém análises que desenvolvi em pesquisas acadêmicas e está sendo atualizado conforme elas são publicadas em periódicos científicos.
