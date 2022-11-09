@@ -1,3 +1,4 @@
+install.packages("readxl")
 library(readxl)
 reprod3<- read_excel("invest.reprod3.xlsx", sheet=1, col_names = T)
 attach(reprod3)
