@@ -1,6 +1,19 @@
-install.packages("readxl")
-library(readxl)
-reprod3<- read_excel("invest.reprod3.xlsx", sheet=1, col_names = T)
+#Nessa pesquisa eu investiguei se havia diferença na perfomance de desenvolvimento
+#em proles subsequentes de fêmeas do escorpião amarelo, Tityus stigmurus
+#Embora os filhotes sejam clones da mãe, que se reproduz assexuadamente,
+#é esperado que mães mais velhas produzam menor número de filhotes
+#ou ao menos filhotes com um desenvolvimento prejudicado
+
+#Para avaliar isso, foram comparadas duas ninhadas consecutivas (primeira e segunda)
+#de um amontoado de fêmeas dessa espécie criadas em laboratório sob as mesmas condições de criação
+#O desenvolvimento dos filhotes foi acompanhado até que uma quantidade atingisse a fase adulta
+#Durante esse tempo, foram mensuradas características que apontam o "desempenho" das primeiras e segundas ninhadas
+
+#E vamos para os códigos!
+
+#install.packages("readxl") #instalando o pacote para leitura de planilhas do excel
+library(readxl) #carregando o pacote no ambiente virtual
+reprod3<- read_excel("invest.reprod3.xlsx", sheet=1, col_names = T) #atribuindo os dados da planilha a uma variável
 attach(reprod3)
 TOM<- (reprod3$TOM2)
 ON<- (reprod3$OS)
