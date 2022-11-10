@@ -14,35 +14,34 @@
 #install.packages("readxl") #instalando o pacote para leitura de planilhas do excel
 library(readxl) #carregando o pacote no ambiente virtual
 reprod3<- read_excel("invest.reprod3.xlsx", sheet=1, col_names = T) #atribuindo os dados da planilha a uma variável
-attach(reprod3)
-TOM<- (reprod3$TOM2)
-ON<- (reprod3$OS)
-FS<- (reprod3$FS)
-FM<- (reprod3$FM)
+attach(reprod3) #possibilitando acessar as variáveis de dentro da planilha pelo seu nome nela
+TOM<- (reprod3$TOM2) #criando objeto/variável total offspring mass
+ON<- (reprod3$OS) #criando objeto/variável offspring number
+FS<- (reprod3$FS) #criando objeto/variável female size
+FM<- (reprod3$FM) # criando objeto/variável female mass
 
-#testando a normalidade das variáveis
+#testando a normalidade das variáveis para definir se deve ser aplicado um teste paramétrico, não-paramétrico ou aplicar outra distribuição
 shapiro.test(TOM)
 shapiro.test(ON)
 shapiro.test(FS)
 shapiro.test(FM)
 
+#o resultado foi distribuição normal para todas as variáveis
+#seguindo para o modelo preditivo de quais variáveis/características da mãe influenciam no fitness da prole
 
+# Para isso, foi utilizado um Modelo Linear Geral com critério de Akaike
+#Assim foi testado qual o melhor modelo que representa a influência da condição maternal sobre a ninhada
 
-#Modelo Linear Geral com critério de Akaike para testar
-#qual o melhor modelo que representa a influência da condição maternal sobre a ninhada
-
-#glm com número de filhotes na ninhada como variável dependente das condições maternais
+#modelo com número de filhotes na ninhada como variável dependente das condições maternais
 glmON <- glm(ON ~ FS * FM, family = gaussian())
-library(MASS)
-summary(glmON)
-anova(glmON)
+library(MASS) #carregando pacote
+summary(glmON) #exibir sumário estatístico
+anova(glmON) #realizar uma ANOVA a posteriori
 
-#glm com massa total da ninhada como variável dependente das condições maternais
+#modelo com massa total da ninhada como variável dependente das condições maternais
 glmTOM <- glm(TOM ~ FS * FM, family = gaussian())
-library(MASS)
-summary(glmTOM)
-anova(glmTOM)
-
+summary(glmON) #exibir sumário estatístico
+anova(glmON) #realizar uma ANOVA a posteriori
 
 ggplot(reprod3, aes(x = ON, y = TOM, color = FM) ) +
   geom_point() +
