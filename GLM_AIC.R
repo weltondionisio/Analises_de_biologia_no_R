@@ -29,7 +29,7 @@ shapiro.test(FM)
 #o resultado foi distribuição normal para todas as variáveis
 #seguindo para o modelo preditivo de quais variáveis/características da mãe influenciam no fitness da prole
 
-# Para isso, foi utilizado um Modelo Linear Geral com critério de Akaike
+# Para isso, foi utilizado um Modelo Linear Geral com critério de Akaike (AIC)
 #Assim foi testado qual o melhor modelo que representa a influência da condição maternal sobre a ninhada
 
 #modelo com número de filhotes na ninhada como variável dependente das condições maternais
